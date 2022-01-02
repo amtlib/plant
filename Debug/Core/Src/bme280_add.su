@@ -1,0 +1,6 @@
+bme280_add.c:16:8:BME280_init	24	static
+bme280_add.c:57:8:BME280_read_data	24	static
+bme280_add.c:72:6:print_sensor_data	48	static
+bme280_add.c:80:6:delay_ms	16	static
+bme280_add.c:84:8:i2c_read	48	static
+bme280_add.c:90:8:i2c_write	48	static
