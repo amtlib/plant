@@ -226,6 +226,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	// time to check soil
+	// TODO adjust timer to be called once in an hour
 	if (htim->Instance == TIM16) {
 		// 4095 - without water
 		// 1400 - in water
@@ -233,7 +234,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 			HAL_GPIO_WritePin(PUMP_GPIO_Port, PUMP_Pin, GPIO_PIN_SET);
 			HAL_TIM_Base_Start_IT(&htim17);
 		}
-	}else if (htim->Instance == TIM17) {
+	} else if (htim->Instance == TIM17) {
+		// turn off the punp
 		HAL_GPIO_WritePin(PUMP_GPIO_Port, PUMP_Pin, GPIO_PIN_RESET);
 		HAL_TIM_Base_Stop_IT(&htim17);
 	}
